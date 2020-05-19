@@ -1,0 +1,8 @@
+DB structure
+
+Book
+-title (string)
+-author (string)
+-year (int)
+-pages (int)
+
