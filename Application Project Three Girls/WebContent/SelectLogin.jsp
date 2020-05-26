@@ -6,14 +6,14 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="Application Project Index">
+	<meta name="description" content="Application Project Select Login">
 	<meta name="author" content="Group Three Girls">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="icon" href= "Icon.png">
-	<title>Index</title>
+	<title>Login</title>
 	
 	<style type="text/css">
-		h1 {
+		h3 {
 			color: darkcyan;
 			font-family: "Times New Roman";
 			font-weigth: bold;
@@ -39,8 +39,11 @@
 <body>
 
 	<div id="align">
-		<h1 class="pb-3">Welcome to Three Girls Library!</h1>
-		<button class="btn btn-info" onclick="document.location = 'SelectLogin.jsp'">to Login</button>
+		<h3 class="pb-3">Select Login Role</h3>
+		<div class="pb-2">
+			<button class="btn btn-info" onclick="document.location = 'UserLogin.jsp'">User</button>
+		</div>
+		<button class="btn btn-info" onclick="document.location = 'AdminLogin.jsp'">Admin</button>
 	</div>
 	
 </body>

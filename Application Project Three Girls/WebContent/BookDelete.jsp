@@ -1,30 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="def.*" %>
 
 <!DOCTYPE html>
 
 <html lang="en">
 
 <head>
+
 	<meta charset="UTF-8">
-	<meta name="description" content="Application Project Index">
+	<meta name="description" content="Application Project Delete Book">
 	<meta name="author" content="Group Three Girls">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="icon" href= "Icon.png">
-	<title>Index</title>
+	<title>Delete Book</title>
 	
 	<style type="text/css">
-		h1 {
+		h3 {
 			color: darkcyan;
 			font-family: "Times New Roman";
 			font-weigth: bold;
-		}
-		body {
-			background-image: url(library.jpeg);
-			background-color: rgba(255,255,255,0.8);
-    		background-blend-mode: lighten;
-			background-repeat: no-repeat;
-			height: 100%;
-			background-size: cover;
 		}
 		#align {
 			position: absolute;
@@ -33,14 +27,39 @@
 			transform: translate(-50%, -50%);
 			text-align: center;
 		}
+		body {
+			background-image: url(library.jpeg);
+			background-color: rgba(255,255,255,0.8);
+    		background-blend-mode: lighten;
+			background-repeat: no-repeat;
+			height: 100%;
+			background-size: cover;
+			
+		}
 	</style>
+	
 </head>
 
 <body>
 
 	<div id="align">
-		<h1 class="pb-3">Welcome to Three Girls Library!</h1>
-		<button class="btn btn-info" onclick="document.location = 'SelectLogin.jsp'">to Login</button>
+		<%
+	
+			Class.forName("org.postgresql.Driver");
+	
+			int id = Integer.parseInt(request.getParameter("id"));
+	
+			Main m = new Main();
+		
+			m.deleteBook(id);
+		
+		%>
+
+		<div>
+			<h3>The Book has been successfully deleted!</h3>
+			<button class="btn btn-outline-info" onclick="document.location = 'ABookList.jsp'">Go Back</button>
+		</div>
+
 	</div>
 	
 </body>

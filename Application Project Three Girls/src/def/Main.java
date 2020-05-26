@@ -19,6 +19,7 @@ public class Main {
         Connection con = DriverManager.getConnection(url, user, password);
        
         return con;
+        
 	}
 
 	public ArrayList<Book> getBooks() throws Exception {
@@ -48,6 +49,7 @@ public class Main {
 	public Book getBook(int id) throws Exception {
 		
 		PreparedStatement st = getCon().prepareStatement("SELECT id, title, author, year, pages FROM books WHERE id = ?");
+		
 		st.setInt(1, id);
 		ResultSet rs = st.executeQuery();
 		
@@ -82,18 +84,23 @@ public class Main {
 	public void updateBook(int id, Book b) throws Exception {
 		
 		PreparedStatement st = getCon().prepareStatement("UPDATE books SET title = ?, author = ?, year = ?, pages = ? WHERE id = ?;");
+		
 		st.setString(1, b.title);
 		st.setString(2, b.author);
 		st.setInt(3, b.year);
 		st.setInt(4, b.pages);
 		st.setInt(5, id);
 		st.execute();
+		
 	}
 	
 	public void deleteBook(int id) throws Exception {
+		
 		PreparedStatement st = getCon().prepareStatement("DELETE FROM books WHERE id = ?");
+		
 		st.setInt(1, id);
 		st.execute();
+		
 	}
 	
 }
