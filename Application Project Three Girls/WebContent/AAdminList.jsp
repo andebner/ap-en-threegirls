@@ -54,7 +54,6 @@
 		<table class="table table-bordered table-hover" id="table">
 			<thead class="table-info">
 				<tr>
-					<th>ID</th>
 					<th>Firstname</th>
 					<th>Lastname</th>
 					<th>Username</th>
@@ -78,7 +77,6 @@
 				%>
         	
 				<tr>
-					<td><%= a.id %></td>
 					<td><%= a.firstname %></td>
 					<td><%= a.lastname %></td>
 					<td><%= a.username %></td>

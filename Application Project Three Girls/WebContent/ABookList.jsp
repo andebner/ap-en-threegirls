@@ -54,7 +54,6 @@
 		<table class="table table-bordered table-hover" id="table">
 			<thead class="table-info">
 				<tr>
-					<th>ID</th>
 					<th>Title</th>
 					<th>Author</th>
 					<th>Year</th>
@@ -77,7 +76,6 @@
 				%>
         	
 				<tr>
-					<td><%= b.id %></td>
 					<td><%= b.title %></td>
 					<td><%= b.author %></td>
 					<td><%= b.year %></td>
