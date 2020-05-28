@@ -58,7 +58,7 @@
 		<div>
 			<h3 class="pb-2">Are you sure you want to delete your Admin Account?</h3>
 			<button class="btn btn-outline-danger" onclick="document.location = 'DeleteCurrentAdmin.jsp'">YES</button>
-			<button class="btn btn-outline-success" onclick="document.location = 'EditAdmin.jsp?aid=<%= id %>'">NO</button>
+			<button class="btn btn-outline-success" onclick="document.location = 'EditAdmin.jsp?id=<%= id %>'">NO</button>
 		</div>
 				
 		<%
