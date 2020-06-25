@@ -8,6 +8,8 @@ public class Book {
 	public String author = "";
 	public int year = 2020;
 	public int pages = 0;
+	public boolean borrow = false;
+	public int by = 0;
 	
 	public int getId() {
 		return id;
@@ -48,5 +50,21 @@ public class Book {
 	public void setPages(int pages) {
 		this.pages = pages;
 	}
-	
+
+	public boolean isBorrow() {
+		return borrow;
+	}
+
+	public void setBorrow(boolean borrow) {
+		this.borrow = borrow;
+	}
+
+	public int getBy() {
+		return by;
+	}
+
+	public void setBy(int by) {
+		this.by = by;
+	}
+
 }

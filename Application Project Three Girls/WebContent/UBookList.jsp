@@ -100,6 +100,7 @@
 					<th>Author</th>
 					<th>Year</th>
 					<th>Pages</th>
+					<th>Borrow</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -119,15 +120,47 @@
 					<td><%= b.author %></td>
 					<td><%= b.year %></td>
 					<td><%= b.pages %></td>
-				</tr>
-        
+					
         		<%
+					
+				
+						if(b.borrow==true){
+							
+							if(b.by == u.id) {
+								
+								%>
+									<td><button class="btn btn-outline-danger" onclick="document.location = 'BorrowBook.jsp?bid=<%= b.id %>'">Return</button></td>
+								<%
+								
+							} else {
+							
+							%>
+								<td style="color: red;">Not available</td>
+							<%
+							
+							}
+							
+						} else {
+							
+							%>
+								<td><button class="btn btn-outline-primary" onclick="document.location = 'BorrowBook.jsp?bid=<%= b.id %>'">Borrow</button></td>
+							<%
+							
+						}
+        		
 					}
+				
 				%>
-			
+								
+				</tr>
+							
 			</tbody>
 		</table>
-    
+    	
+    	<div>
+    		<button class="btn btn-outline-primary" onclick="document.location = 'UBorrowed.jsp'">My Borrowed Books</button>
+    	</div>
+    	
 	</div>
 
 </body>

@@ -9,11 +9,14 @@
 <head>
 
 	<meta charset="UTF-8">
-	<meta name="description" content="Application Project Book List">
+	<meta name="description" content="Application Project Borrowed Book List">
 	<meta name="author" content="Group Three Girls">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<link rel="icon" href= "Icon.png">
-	<title>Book List</title>
+	<title>Borrowed Book List</title>
 	
 	<style type="text/css">
 		h1 {
@@ -52,19 +55,52 @@
 <body class="container">
 
 	<%
-	
-		int id = Integer.parseInt(session.getAttribute("aid").toString());
-	
-		AdminMain am = new AdminMain();
-		Admin a = new Admin();
+
+		Class.forName("org.postgresql.Driver");
 		
-		a = am.getAdmin(id);
+		UserMain um = new UserMain();
+		AdminMain am = new AdminMain();
+		
+		String edit = "";
+		String title = "";
+		String ret = "";
+		String back = "";
+		User u = new User();
+		
+		if(session.getAttribute("uid")== null) {
+			
+			int aid = Integer.parseInt(session.getAttribute("aid").toString());
+			
+			Admin a = new Admin();
+			a = am.getAdmin(aid);
+			
+			int uid = Integer.parseInt(request.getParameter("uid").toString());
+
+			u = um.getUser(uid);
+			
+			edit = "EditAdmin.jsp";
+			title = "Books borrowed by " + u.username;
+			ret = "Mark as returned";
+			back = "AUserList.jsp?aid=" + a.id;
+		
+		} else {
+		
+			int uid = Integer.parseInt(session.getAttribute("uid").toString()); 
+		
+			u = um.getUser(uid);
+		
+			edit = "EditUser.jsp";
+			title = "My Borrowed Books";
+			ret = "Return";
+			back = "UBookList.jsp";
+			
+		}
 		
 	%>
-
+	
 	<nav class="navbar navbar-light navbar-expand-sm">
 	
-				<a class="nav-link text-info" href="EditAdmin.jsp?id=<%= a.id %>">Profile</a>
+				<a class="nav-link text-info" href="<%= edit %>">Profile</a>
 	
 				<span class="navbar-brand mx-auto">Three Girls Library</span>
 	
@@ -74,7 +110,7 @@
 
 	<div id="align">
 	
-		<h1 class="pt-3 pb-2">Book List</h1>
+		<h1 class="pt-3 pb-2"><%= title %></h1>
 
 		<table class="table table-bordered table-hover" id="table">
 			<thead class="table-info">
@@ -83,7 +119,6 @@
 					<th>Author</th>
 					<th>Year</th>
 					<th>Pages</th>
-					<th>Borrowed</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -91,31 +126,16 @@
 
 				<%
 				
-					Class.forName("org.postgresql.Driver");
-							
 					Main m = new Main();
-					UserMain um = new UserMain();
-					
 					ArrayList<Book> books = m.getBooks();
 				
 					for (int i=0; i<books.size(); i++) {
 						Book b = books.get(i);
 						
-						String borrowed = "";
-						
-						if (b.isBorrow()==false) {
+						if(b.isBorrow()) {
 							
-							borrowed = "Not Borrowed";
+							if(u.id == b.by) {
 							
-						} else {
-							
-							User brw = new User();
-							brw = um.getUser(b.by);
-							
-							borrowed = "Borrowed by " + brw.username + "  <button class=\"btn btn-outline-primary\" onclick=\"document.location = 'BorrowInfo.jsp?book=" + b.id + "'\">More</button>";
-							
-						}
-					
 				%>
         	
 				<tr>
@@ -123,20 +143,27 @@
 					<td><%= b.author %></td>
 					<td><%= b.year %></td>
 					<td><%= b.pages %></td>
-					<td><%= borrowed %></td>
-					<td><button class="btn btn-sm btn-outline-warning" onclick="document.location = 'BookEdit.jsp?id=<%= b.id %>'">Edit</button> | <button class="btn btn-sm btn-outline-danger" onclick="document.location = 'BookDelete.jsp?id=<%=b.id %>'">Delete</button></td>
-				</tr>
-        
+					<td><button class="btn btn-outline-danger" onclick="document.location = 'BorrowBook.jsp?bid=<%= b.id %>'"><%= ret %></button></td>
+					
         		<%
+					
+							}
+						
+						}
+						
 					}
-				%>
-			
+				
+				%>		
+						
+				</tr>
+							
 			</tbody>
 		</table>
-    
-    	<div class="pt-3 text-center"><button class="btn btn-info" onclick="document.location = 'BookEdit.jsp'">Add</button></div>
-    	<div class="pt-2 text-center"><button class="btn btn-outline-danger" onclick="document.location = 'ASelectList.jsp'">Back</button></div>
-		
+    	
+    	<div>
+    		<button class="btn btn-outline-danger" onclick="document.location = '<%= back %>'">Back</button>
+    	</div>
+    	
 	</div>
 
 </body>

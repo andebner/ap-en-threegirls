@@ -25,7 +25,7 @@ public class Main {
 	public ArrayList<Book> getBooks() throws Exception {
 
 		Statement st = getCon().createStatement();
-		ResultSet rs = st.executeQuery("SELECT id, title, author, year, pages FROM books"); {
+		ResultSet rs = st.executeQuery("SELECT id, title, author, year, pages, borrow, by FROM books"); {
 		
 		ArrayList<Book> result = new ArrayList<Book>();
 		
@@ -37,6 +37,8 @@ public class Main {
             	b.author = rs.getString(3);
             	b.year = rs.getInt(4);
             	b.pages = rs.getInt(5);
+            	b.borrow = rs.getBoolean(6);
+            	b.by = rs.getInt(7);
             	result.add(b);
             }
         
@@ -48,7 +50,7 @@ public class Main {
 	
 	public Book getBook(int id) throws Exception {
 		
-		PreparedStatement st = getCon().prepareStatement("SELECT id, title, author, year, pages FROM books WHERE id = ?");
+		PreparedStatement st = getCon().prepareStatement("SELECT id, title, author, year, pages, borrow, by FROM books WHERE id = ?");
 		
 		st.setInt(1, id);
 		ResultSet rs = st.executeQuery();
@@ -62,6 +64,8 @@ public class Main {
 			b.author = rs.getString("author");
 			b.year = rs.getInt("year");
 			b.pages = rs.getInt("pages");
+			b.borrow = rs.getBoolean("borrow");
+			b.by = rs.getInt("by");
 			
 		}
 		
@@ -99,6 +103,28 @@ public class Main {
 		PreparedStatement st = getCon().prepareStatement("DELETE FROM books WHERE id = ?");
 		
 		st.setInt(1, id);
+		st.execute();
+		
+	}
+	
+	public void borrowBook(int id, int uid) throws Exception {
+		
+		PreparedStatement st = getCon().prepareStatement("UPDATE books SET borrow = ?, by = ? WHERE id = ?;");
+		
+		st.setBoolean(1, true);
+		st.setInt(2, uid);
+		st.setInt(3, id);
+		st.execute();
+		
+	}
+	
+	public void returnBook(int id) throws Exception {
+		
+		PreparedStatement st = getCon().prepareStatement("UPDATE books SET borrow = ?, by = ? WHERE id = ?;");
+		
+		st.setBoolean(1, false);
+		st.setInt(2, 0);
+		st.setInt(3, id);
 		st.execute();
 		
 	}

@@ -41,11 +41,37 @@
 			height: 100%;
 			background-size: cover;			
 		}
+		.navbar-brand {
+			color: darkcyan  !important;
+			font-family: "Times New Roman";
+		}
 	</style>
 	
 </head>
 
 <body class="container">
+
+	<%
+	
+		int id = Integer.parseInt(session.getAttribute("aid").toString());
+	
+		AdminMain am = new AdminMain();
+		Admin a = new Admin();
+		
+		a = am.getAdmin(id);
+		
+	%>
+
+	<nav class="navbar navbar-light navbar-expand-sm">
+	
+				<a class="nav-link text-info" href="EditAdmin.jsp?id=<%= a.id %>">Profile</a>
+	
+				<span class="navbar-brand mx-auto">Three Girls Library</span>
+	
+				<a class="nav-link text-info" href="Logout.jsp">Logout</a>
+	
+	</nav>
+
 
 	<div id="align">
 	
@@ -65,22 +91,20 @@
 				<%
 				
 					Class.forName("org.postgresql.Driver");
-				
-					AdminMain am = new AdminMain();
 			
 					ArrayList<Admin> admins = am.getAllAdmin();
 				
 					for (int i=0; i<admins.size(); i++) {
 						
-						Admin a = admins.get(i);
+						Admin al = admins.get(i);
 					
 				%>
         	
 				<tr>
-					<td><%= a.firstname %></td>
-					<td><%= a.lastname %></td>
-					<td><%= a.username %></td>
-					<td><button class="btn btn-sm btn-outline-warning" onclick="document.location = 'EditAdmin.jsp?id=<%= a.id %>'">Edit</button> | <button class="btn btn-sm btn-outline-danger" onclick="document.location = 'DeleteAdmin.jsp?id=<%=a.id %>'">Delete</button></td>
+					<td><%= al.firstname %></td>
+					<td><%= al.lastname %></td>
+					<td><%= al.username %></td>
+					<td><button class="btn btn-sm btn-outline-warning" onclick="document.location = 'EditAdmin.jsp?id=<%= al.id %>'">Edit</button> | <button class="btn btn-sm btn-outline-danger" onclick="document.location = 'DeleteAdmin.jsp?id=<%=al.id %>'">Delete</button></td>
 				</tr>
         
         		<%

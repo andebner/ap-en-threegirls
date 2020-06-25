@@ -41,11 +41,36 @@
 			height: 100%;
 			background-size: cover;			
 		}
+		.navbar-brand {
+			color: darkcyan  !important;
+			font-family: "Times New Roman";
+		}
 	</style>
 	
 </head>
 
 <body class="container">
+
+	<%
+	
+		int id = Integer.parseInt(session.getAttribute("aid").toString());
+	
+		AdminMain am = new AdminMain();
+		Admin a = new Admin();
+		
+		a = am.getAdmin(id);
+		
+	%>
+
+	<nav class="navbar navbar-light navbar-expand-sm">
+	
+				<a class="nav-link text-info" href="EditAdmin.jsp?id=<%= a.id %>">Profile</a>
+	
+				<span class="navbar-brand mx-auto">Three Girls Library</span>
+	
+				<a class="nav-link text-info" href="Logout.jsp">Logout</a>
+	
+	</nav>
 
 	<div id="align">
 	
@@ -58,6 +83,7 @@
 					<th>Lastname</th>
 					<th>Username</th>
 					<th>Email</th>
+					<th>Borrowed Books</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -81,6 +107,7 @@
 					<td><%= u.lastname %></td>
 					<td><%= u.username %></td>
 					<td><%= u.email %></td>
+					<td><button class="btn btn-outline-primary" onclick="document.location ='UBorrowed.jsp?uid=<%= u.id %>'">Books</button></td>
 					<td><button class="btn btn-sm btn-outline-danger" onclick="document.location = 'DeleteUser.jsp?id=<%=u.id %>'">Delete</button></td>
 				</tr>
         
