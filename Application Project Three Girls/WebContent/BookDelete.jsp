@@ -34,7 +34,6 @@
 			background-repeat: no-repeat;
 			height: 100%;
 			background-size: cover;
-			
 		}
 	</style>
 	
@@ -61,6 +60,10 @@
 		</div>
 
 	</div>
+
+	<footer class="page-footer fixed-bottom">
+		 <div class="footer-copyright text-center py-3">© 2020 Three Girls</div>
+	</footer>
 	
 </body>
 

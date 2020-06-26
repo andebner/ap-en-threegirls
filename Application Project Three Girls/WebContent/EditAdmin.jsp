@@ -137,6 +137,10 @@
 		<button class="btn btn-outline-danger" onclick="document.location = '<%= back %>'">Back</button>
 		
 	</div>
+
+	<footer class="page-footer fixed-bottom">
+		 <div class="footer-copyright text-center py-3">© 2020 Three Girls</div>
+	</footer>
 	
 </body>
 

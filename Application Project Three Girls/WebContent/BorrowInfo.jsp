@@ -57,20 +57,7 @@
 
 <body class="container">
 
-	<nav class="navbar navbar-light navbar-expand-sm">
-	
-				<a class="nav-link text-info" href="EditUser.jsp">Profile</a>
-	
-				<span class="navbar-brand mx-auto">Three Girls Library</span>
-	
-				<a class="nav-link text-info" href="Logout.jsp">Logout</a>
-	
-	</nav>
-
-	<div id="align">
-	
-
-				<%
+		<%
 				
 					Class.forName("org.postgresql.Driver");
 				
@@ -87,19 +74,43 @@
 					User borrower = new User();
 					
 					borrower = um.getUser(b.by);
+					
+					int aid = Integer.parseInt(session.getAttribute("aid").toString());
 									
-				%>
+		%>
+
+	<nav class="navbar navbar-light navbar-expand-sm">
+	
+				<a class="nav-link text-info" href="EditAdmin.jsp?id=<%= aid %>">Profile</a>
+	
+				<span class="navbar-brand mx-auto">Three Girls Library</span>
+	
+				<a class="nav-link text-info" href="Logout.jsp">Logout</a>
+	
+	</nav>
+
+	<div id="align">
 				
 		<div>
 			<h3><%= b.title %> has been borrowed by</h3>
 				
 			<table class="table table-bordered table-hover pt-3" id="table">
+			<thead class="table-info">
+				<tr>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Username</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
 				<tr>
 					<td><%= borrower.firstname %></td>
 					<td><%= borrower.lastname %></td>
 					<td><%= borrower.username %></td>
 					<td><%= borrower.email %></td>
 				</tr>
+			</tbody>
 			</table>
 			
 			<button class="btn btn-outline-danger" onclick="document.location = 'ABookList.jsp'">Go Back</button>
@@ -107,6 +118,10 @@
 			
     
 	</div>
+
+	<footer class="page-footer fixed-bottom">
+		 <div class="footer-copyright text-center py-3">© 2020 Three Girls</div>
+	</footer>
 
 </body>
 

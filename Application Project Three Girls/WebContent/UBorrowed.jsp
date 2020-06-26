@@ -78,7 +78,7 @@
 
 			u = um.getUser(uid);
 			
-			edit = "EditAdmin.jsp";
+			edit = "EditAdmin.jsp?id=" + aid;
 			title = "Books borrowed by " + u.username;
 			ret = "Mark as returned";
 			back = "AUserList.jsp?aid=" + a.id;
@@ -165,6 +165,10 @@
     	</div>
     	
 	</div>
+
+	<footer class="page-footer fixed-bottom">
+		 <div class="footer-copyright text-center py-3">© 2020 Three Girls</div>
+	</footer>
 
 </body>
 

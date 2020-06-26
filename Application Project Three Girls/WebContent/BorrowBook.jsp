@@ -79,11 +79,11 @@
 				
 				if(session.getAttribute("uid")== null) {
 					
-					int aid = Integer.parseInt(request.getParameter("aid").toString());
+					int aid = Integer.parseInt(session.getAttribute("aid").toString());
 					
 					id = b.by;
 					ret = "UBorrowed.jsp?uid=" + b.by;
-					edit = "EditAdmin.jsp?aid=" + aid;
+					edit = "EditAdmin.jsp?id=" + aid;
 					
 				} else {
 					
@@ -113,7 +113,7 @@
 				
 		<nav class="navbar navbar-light navbar-expand-sm">
 	
-			<a class="nav-link text-info" href="EditUser.jsp">Profile</a>
+			<a class="nav-link text-info" href="<%= edit %>">Profile</a>
 	
 			<span class="navbar-brand mx-auto">Three Girls Library</span>
 	
@@ -132,6 +132,10 @@
 			
     
 	</div>
+
+	<footer class="page-footer fixed-bottom">
+		 <div class="footer-copyright text-center py-3">© 2020 Three Girls</div>
+	</footer>
 
 </body>
 

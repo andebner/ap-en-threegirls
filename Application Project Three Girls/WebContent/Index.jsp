@@ -42,6 +42,10 @@
 		<h1 class="pb-3">Welcome to Three Girls Library!</h1>
 		<button class="btn btn-info" onclick="document.location = 'SelectLogin.jsp'">to Login</button>
 	</div>
+
+	<footer class="page-footer fixed-bottom">
+		 <div class="footer-copyright text-center py-3">© 2020 Three Girls</div>
+	</footer>
 	
 </body>
 
