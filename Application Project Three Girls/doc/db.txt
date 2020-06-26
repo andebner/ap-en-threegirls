@@ -1,8 +1,26 @@
 DB structure
 
 Book
+-id (int)
 -title (string)
 -author (string)
 -year (int)
 -pages (int)
+-borrowed (boolean)
+-borrowed by (int)
+
+User
+-id (int)
+-firstname(string)
+-lastname(string)
+-username(string)
+-email(string)
+-password(string)
+
+Admin
+-id (int)
+-firstname(string)
+-lastname(string)
+-username(string)
+-password(string)
 
