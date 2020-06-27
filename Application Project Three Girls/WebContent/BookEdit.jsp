@@ -109,7 +109,7 @@
     
     		<input name="id" type="hidden" value="<%= b.id%>">
     
-    		<div class="pt-3 pl-5" style="margin-left: 50px">
+    		<div class="pt-3 pl-5 pb-5" style="margin-left: 50px">
         		<button class="btn btn-success" type="submit" value="Submit">Save</button>
         		<button class="btn btn-outline-danger" onclick="document.location = 'ABookList.jsp'" type="button">Close</button>
     		</div>

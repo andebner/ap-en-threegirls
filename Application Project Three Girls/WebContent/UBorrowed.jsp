@@ -160,7 +160,7 @@
 			</tbody>
 		</table>
     	
-    	<div>
+    	<div class="pb-5">
     		<button class="btn btn-outline-danger" onclick="document.location = '<%= back %>'">Back</button>
     	</div>
     	

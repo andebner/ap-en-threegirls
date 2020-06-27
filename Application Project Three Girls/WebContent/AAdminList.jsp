@@ -115,7 +115,7 @@
 		</table>
     
     	<div class="pt-3 text-center"><button class="btn btn-info" onclick="document.location = 'EditAdmin.jsp'">Add Admin</button></div>
-		<div class="pt-2 text-center"><button class="btn btn-outline-danger" onclick="document.location = 'ASelectList.jsp'">Back</button></div>
+		<div class="pt-2 pb-5 text-center"><button class="btn btn-outline-danger" onclick="document.location = 'ASelectList.jsp'">Back</button></div>
 
 	</div>
 

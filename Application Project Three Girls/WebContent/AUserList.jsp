@@ -118,7 +118,7 @@
 			</tbody>
 		</table>
     
-		<div class="pt-3 text-center"><button class="btn btn-outline-danger" onclick="document.location = 'ASelectList.jsp'">Back</button></div>
+		<div class="pt-3 pb-5 text-center"><button class="btn btn-outline-danger" onclick="document.location = 'ASelectList.jsp'">Back</button></div>
 		
 	</div>
 

@@ -157,7 +157,7 @@
 			</tbody>
 		</table>
     	
-    	<div>
+    	<div class="pb-5">
     		<button class="btn btn-outline-primary" onclick="document.location = 'UBorrowed.jsp'">My Borrowed Books</button>
     	</div>
     	
