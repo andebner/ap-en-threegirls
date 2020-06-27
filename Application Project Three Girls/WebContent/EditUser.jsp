@@ -72,14 +72,6 @@
 			int id = Integer.parseInt(session.getAttribute("uid").toString());
 			
 			u = um.getUser(id); 
-				
-		%>
-				
-			<div class="pt-3 pl-3">	
-				<button class="btn btn-outline-danger" onclick="document.location = 'DeleteUser.jsp'">Delete Account</button>
-			</div>
-				
-	<%
 			
 		}
 		
@@ -124,12 +116,14 @@
    			
    			<input name="id" type="hidden" value="<%=u.id%>">
    			
-   			<div class="row pt-4 justify-content-center pb-5">
+   			<div class="row pt-4 justify-content-center pb-3">
    				<button type="submit" class="btn btn-success px-4 py-1 mr-2" ><%= submit %></button>
    			</div>
 		</form>
 		
-		<button class="btn btn-outline-danger" onclick="document.location = '<%= back %>'">Back</button>
+		<div class="pb-5">
+			<button class="btn btn-outline-danger" onclick="document.location = '<%= back %>'">Back</button>
+		</div>
 		
 	</div>
 	
