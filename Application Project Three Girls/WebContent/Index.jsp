@@ -16,7 +16,7 @@
 		h1 {
 			color: darkcyan;
 			font-family: "Times New Roman";
-			font-weigth: bold;
+			font-weight: bold;
 		}
 		body {
 			background-image: url(library.jpeg);
